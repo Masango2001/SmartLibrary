@@ -1,408 +1,364 @@
-# Smart Library
+# 📚 BiblioManager
+## Système de Gestion de Bibliothèque
 
-## 📚 Présentation du projet
-
-**Smart Library** est une application web de gestion d'une bibliothèque développée avec **Django** et le moteur de **Templates Django**. L'application permet de gérer les utilisateurs, les livres, les catégories et les emprunts à travers une interface web conviviale.
-
-Ce projet a été réalisé dans le cadre d'un travail pratique sur la collaboration avec **Git** et **GitHub**. Il met en œuvre les bonnes pratiques de développement collaboratif :
-
-- Gestion de versions avec Git
-- Dépôt centralisé sur GitHub
-- Travail collaboratif avec des branches
-- Pull Requests et revue de code
-- Protection des branches
-- Intégration Continue (CI) avec GitHub Actions
+![Django](https://img.shields.io/badge/Django-5.x-darkgreen)
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-orange)
 
 ---
 
-## 🎯 Objectifs
+# Présentation
 
-- Développer une application web avec Django.
-- Utiliser les Templates Django pour l'interface utilisateur.
-- Appliquer une stratégie de gestion de branches.
-- Collaborer efficacement avec GitHub.
-- Automatiser les vérifications du code avec GitHub Actions.
-- Exécuter automatiquement les tests unitaires.
-- Mettre en place un workflow professionnel de validation du code.
+*BiblioManager* est une application Web développée avec *Django* utilisant le moteur de templates Django pour l'affichage des interfaces utilisateur.
+
+L'objectif principal est de permettre à une bibliothèque de gérer efficacement ses livres, ses membres ainsi que les opérations d'emprunt et de retour.
+
+Ce projet est réalisé dans le cadre du *cours de DevOps* afin de mettre en pratique les bonnes pratiques de développement collaboratif, l'intégration continue (CI), GitHub Flow et GitHub Actions.
 
 ---
 
-## 🛠️ Technologies utilisées
+# Objectifs du projet
 
-### Backend
+L'application doit permettre de :
 
-- Python
-- Django
+- gérer les livres ;
+- gérer les catégories ;
+- gérer les auteurs ;
+- gérer les membres ;
+- gérer les emprunts ;
+- gérer les retours ;
+- gérer les utilisateurs ;
+- produire quelques statistiques.
 
-### Frontend
-
-- Django Templates
-- HTML5
-- CSS3
-- Bootstrap 5
-
-### Base de données
-
-- SQLite
-
-### Gestion de versions
-
-- Git
-- GitHub
-
-### Intégration Continue
-
-- GitHub Actions
-- Ruff
-- Django Unit Tests
+Le projet est développé suivant une architecture propre permettant une maintenance simple et un travail collaboratif.
 
 ---
 
-## ✨ Fonctionnalités
+# Technologies utilisées
 
-### 👤 Gestion des utilisateurs (`accounts`)
+| Technologie | Utilisation |
+|-------------|-------------|
+| Python 3.12 | Langage principal |
+| Django 5 | Framework Web |
+| HTML5 | Interfaces |
+| CSS3 | Mise en forme |
+| Bootstrap 5 | Design |
+| SQLite | Base de données |
+| Git | Versionnement |
+| GitHub | Dépôt centralisé |
+| GitHub Actions | Intégration Continue (CI) |
 
-- Inscription
-- Connexion / Déconnexion
-- Gestion des profils
-- Gestion des permissions
+---
 
-### 📚 Gestion des livres (`books`)
+# Fonctionnalités
+
+## Gestion des livres
 
 - Ajouter un livre
 - Modifier un livre
 - Supprimer un livre
+- Consulter tous les livres
 - Rechercher un livre
-- Consulter la liste des livres
 
-### 🗂 Gestion des catégories (`categories`)
+Chaque livre possède :
+
+- titre
+- ISBN
+- auteur
+- catégorie
+- année de publication
+- nombre d'exemplaires
+- disponibilité
+
+---
+
+## Gestion des auteurs
+
+- Ajouter un auteur
+- Modifier un auteur
+- Supprimer un auteur
+- Liste des auteurs
+
+---
+
+## Gestion des catégories
 
 - Ajouter une catégorie
-- Modifier une catégorie
-- Supprimer une catégorie
-- Associer un livre à une catégorie
+- Modifier
+- Supprimer
+- Liste
 
-### 🔄 Gestion des emprunts (`borrows`)
+Exemple :
 
-- Emprunter un livre
-- Retourner un livre
-- Consulter l'historique des emprunts
+- Informatique
+- Mathématiques
+- Physique
+- Roman
+- Histoire
 
 ---
 
-## 📁 Structure du projet
+## Gestion des membres
 
-```text
-smart_library/
+Chaque membre possède :
 
-├── accounts/
-├── books/
-├── borrows/
-├── categories/
-├── config/
+- Nom
+- Prénom
+- Email
+- Téléphone
+- Adresse
+- Date d'inscription
+
+Le système permet :
+
+- l'inscription
+- la modification
+- la suppression
+- la consultation
+
+---
+
+## Gestion des emprunts
+
+Un membre peut emprunter un ou plusieurs livres.
+
+Le système enregistre :
+
+- le membre
+- le livre
+- la date d'emprunt
+- la date de retour prévue
+- le statut
+
+---
+
+## Gestion des retours
+
+Le bibliothécaire peut enregistrer :
+
+- le retour d'un livre
+- la date réelle du retour
+
+Le stock est automatiquement mis à jour.
+
+---
+
+## Tableau de bord
+
+Le tableau de bord affiche :
+
+- nombre de livres
+- nombre de catégories
+- nombre d'auteurs
+- nombre de membres
+- emprunts en cours
+- livres disponibles
+- livres empruntés
+
+---
+
+# Architecture du projet
+
+
+BiblioManager/
+
+│
+├── bibliomanager/
+│
+├── library/
+│
 ├── templates/
-│   ├── accounts/
-│   ├── books/
-│   ├── borrows/
-│   ├── categories/
-│   └── base.html
+│
 ├── static/
-│   ├── css/
-│   ├── js/
-│   └── images/
-├── .github/
-│   └── workflows/
-│       └── ci.yml
-├── manage.py
+│
+├── media/
+│
+├── tests/
+│
 ├── requirements.txt
-├── README.md
-├── LICENSE
-└── .gitignore
-```
+│
+├── manage.py
+│
+└── README.md
+
 
 ---
 
-## 🌿 Stratégie Git
+# Installation
 
-```text
-main 🔒
- │
- └── develop
-      │
-      ├── feature/accounts
-      ├── feature/books
-      ├── feature/categories
-      ├── feature/borrows
-      └── feature/tests-ci
-```
+## Cloner le projet
 
-### Branches
+bash
+git clone https://github.com/Organisation/BiblioManager.git
 
-#### `main`
-
-- Version stable
-- Aucun push direct
-- Pull Request obligatoire
-- Pipeline CI obligatoire
-- Validation obligatoire
-
-#### `develop`
-
-- Branche d'intégration
-- Toutes les branches `feature/*` sont fusionnées ici
-
-#### Branches `feature/*`
-
-Chaque développeur travaille dans sa propre branche avant de créer une Pull Request vers `develop`.
 
 ---
 
-## 👥 Répartition des tâches
+Créer un environnement virtuel
 
-| Branche | Responsable | Travail |
-|----------|-------------|---------|
-| feature/accounts | Iteriteka Ange Chanciella | Authentification |
-| feature/books | Irishura Darlene | Gestion des livres |
-| feature/categories | Ezako Juste Ariel | Gestion des catégories |
-| feature/borrows | Akimana Nelly Franck | Gestion des emprunts |
-| feature/tests-ci | Masango Alain Blaise | Tests, CI, Documentation |
-
----
-
-## 🔄 Workflow Git
-
-### 1. Mettre à jour `develop`
-
-```bash
-git checkout develop
-git pull origin develop
-```
-
-### 2. Créer une branche
-
-```bash
-git checkout -b feature/books
-```
-
-### 3. Développer
-
-```bash
-git add .
-git commit -m "Add book management"
-```
-
-### 4. Envoyer la branche
-
-```bash
-git push origin feature/books
-```
-
-### 5. Créer une Pull Request
-
-```text
-Feature Branch
-      │
-      ▼
-Code Review
-      │
-      ▼
-GitHub Actions
-      │
-      ▼
-Merge vers develop
-```
-
----
-
-## 🔒 Protection des branches
-
-Les branches `main` et `develop` sont protégées par les règles suivantes :
-
-- Interdiction des push directs
-- Pull Request obligatoire
-- Validation par un ou plusieurs reviewers
-- Pipeline CI obligatoire
-- Branche à jour avant la fusion
-
----
-
-## ⚙️ Pipeline CI
-
-Le pipeline est défini dans :
-
-```text
-.github/workflows/ci.yml
-```
-
-À chaque **Push** ou **Pull Request**, GitHub Actions exécute automatiquement :
-
-### Installation
-
-```bash
-pip install -r requirements.txt
-```
-
-### Analyse du code
-
-```bash
-ruff check .
-```
-
-### Tests
-
-```bash
-python manage.py test
-```
-
-Si une étape échoue :
-
-```text
-❌ CI Failed
-```
-
-La Pull Request est bloquée.
-
-Si toutes les étapes réussissent :
-
-```text
-✅ CI Passed
-```
-
-La Pull Request peut être fusionnée.
-
----
-
-## 🚀 Installation
-
-### Cloner le dépôt
-
-```bash
-git clone <URL_DU_DEPOT>
-```
-
-### Se placer dans le projet
-
-```bash
-cd smart_library
-```
-
-### Créer un environnement virtuel
-
-```bash
+bash
 python -m venv venv
-```
 
-### Activer l'environnement
+
+---
+
+Activer l'environnement
 
 Windows
 
-```bash
+bash
 venv\Scripts\activate
-```
 
-Linux / macOS
 
-```bash
+Linux
+
+bash
 source venv/bin/activate
-```
 
-### Installer les dépendances
 
-```bash
+---
+
+Installer les dépendances
+
+bash
 pip install -r requirements.txt
-```
 
-### Appliquer les migrations
 
-```bash
+---
+
+Effectuer les migrations
+
+bash
 python manage.py migrate
-```
 
-### Créer un superutilisateur
 
-```bash
+---
+
+Créer un administrateur
+
+bash
 python manage.py createsuperuser
-```
 
-### Lancer le serveur
 
-```bash
+---
+
+Lancer le serveur
+
+bash
 python manage.py runserver
-```
 
-Ouvrir :
 
-```text
-http://127.0.0.1:8000/
-```
+Puis ouvrir :
 
-Administration Django :
 
-```text
-http://127.0.0.1:8000/admin/
-```
+http://127.0.0.1:8000
+
 
 ---
 
-## 🧪 Tests
+# Tests
 
-Lancer tous les tests :
+Les tests peuvent être exécutés avec :
 
-```bash
+bash
 python manage.py test
-```
 
-Les tests couvrent :
-
-- Authentification
-- Livres
-- Catégories
-- Emprunts
 
 ---
 
-## 🎓 Démonstration
+# Intégration Continue
 
-La démonstration du projet montre :
+À chaque :
 
-1. Création d'une Pull Request
-2. Exécution automatique du pipeline CI
-3. Échec volontaire d'un test
-4. Blocage de la Pull Request
-5. Correction du problème
-6. Nouveau passage du pipeline
-7. Validation par un reviewer
-8. Fusion vers `develop`
-9. Fusion finale vers `main`
+- Push
+- Pull Request
 
----
+GitHub Actions exécute automatiquement :
 
-## 👨‍💻 Membres de l'équipe
+- Vérification du code (Lint)
+- Exécution des tests unitaires
 
-| Nom | Responsabilité |
-|------|----------------|
-| Masango Alain Blaise | Tests, GitHub Actions, Documentation |
-| Iteriteka Ange Chanciella | Authentification |
-| Irishura Darlene | Gestion des livres |
-| Akimana Nelly Franck | Gestion des emprunts |
-| Ezako Juste Ariel | Gestion des catégories |
+Aucune Pull Request ne peut être fusionnée si les tests échouent.
 
 ---
 
-## 📄 Licence
+# Organisation du travail
 
-Ce projet est distribué sous la licence **MIT**.
+Le projet est développé suivant *GitHub Flow*.
+
+Chaque fonctionnalité est développée dans une branche indépendante puis intégrée via une Pull Request.
+
+La branche *main* est protégée.
+
+Les Push directs sont interdits.
 
 ---
 
-## 🤝 Contribution
+# Répartition des tâches
 
-Pour contribuer :
+| Membre | Responsabilités |
+|---------|-----------------|
+| *IRISHURA Darlene* | Gestion des catégories, documentation utilisateur |
+| *ITERITEKA Ange Chanciella* | Chef de projet, configuration Django, GitHub, GitHub Actions, Dashboard |
+| *MASANGO Alain Blaise* | Gestion des livres |
+| *EZAKO Juste Ariel* | Gestion des membres |
+| *AKIMANA Nelly Franck* | Gestion des emprunts, retours et tests unitaires |
 
-1. Mettre à jour `develop`
-2. Créer une branche `feature/*`
-3. Développer la fonctionnalité
-4. Créer une Pull Request
-5. Attendre la revue de code
-6. Vérifier le succès du pipeline CI
-7. Fusionner après validation
+---
+
+# Workflow Git
+
+Chaque membre suit les étapes suivantes :
+
+1. Créer une branche
+
+
+feature/nom-fonctionnalite
+
+
+Exemple :
+
+
+feature/books
+feature/members
+feature/dashboard
+
+
+2. Développer la fonctionnalité.
+
+3. Commit.
+
+4. Push.
+
+5. Créer une Pull Request.
+
+6. Validation par un autre membre.
+
+7. Fusion dans la branche *main*.
+
+---
+
+# Licence
+
+Ce projet est distribué sous la licence *MIT*.
+
+---
+
+# Équipe
+
+Projet réalisé dans le cadre du cours de *DevOps*.
+
+### Membres
+
+- IRISHURA Darlene
+- ITERITEKA Ange Chanciella
+- MASANGO Alain Blaise
+- EZAKO Juste Ariel
+- AKIMANA Nelly Franck
+
+---
+
+# Remerciements
+
+Nous remercions notre enseignant du cours de *DevOps* pour son accompagnement dans la réalisation de ce projet ainsi que l'ensemble des membres de l'équipe pour leur collaboration.
